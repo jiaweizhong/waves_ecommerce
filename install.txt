@@ -1,0 +1,20 @@
+// install mongodb 
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#overview
+// start mongodb
+sudo service mongod start
+// check mongodb working
+sudo cat /var/log/mongodb/mongod.log
+// check following line
+// [initandlisten] waiting for connections on port 27017
+// stop mongodb
+sudo service mongod stop
+sudo service mongod restart
+// test mongodb
+mongo
+db.test.insert({name: "Jiawei"})
+db.test.find()
+// mongodb management tool -- robo 3T
+
+// package setup
+npm install bcrypt@2.0.1 body-parser@1.18.3 cloudinary@1.11.0 concurrently@3.6.0 cookie-parser@1.4.3 dotenv@6.0.0 express@4.16.3 express-formidable@1.0.0 jsonwebtoken@8.3.0 moment@2.22.2 mongoose@5.1.6 multer@1.3.0 --save
+npm install -g nodemon

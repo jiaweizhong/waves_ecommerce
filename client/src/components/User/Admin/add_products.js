@@ -197,13 +197,13 @@ class AddProduct extends Component {
     }
 
     resetFieldHandler = () => {
-        const newFormData = resetFields(this.state.formData);
+        const newFormData = resetFields(this.state.formData, 'products');
 
         this.setState({
             formData: newFormData,
             formSuccess: true
         });
-
+        // need to clear if payload not used for validation
         setTimeout(() => {
             this.setState({
                 formSuccess: false
@@ -213,12 +213,12 @@ class AddProduct extends Component {
         },3000)
     }
 
-     // submit form
-     submitForm = (event) => {
+    // submit form
+    submitForm = (event) => {
         event.preventDefault();
 
-        let dataToSubmit = generateData(this.state.formData, 'register');
-        let formIsValid = isFormValid(this.state.formData, 'register');
+        let dataToSubmit = generateData(this.state.formData, 'products');
+        let formIsValid = isFormValid(this.state.formData, 'products');
         if(formIsValid){
             this.props.dispatch(addProduct(dataToSubmit)).then(() => {
                 if(this.props.products.addProduct.success){

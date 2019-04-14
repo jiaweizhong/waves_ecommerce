@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserLayout from '../../../hoc/user';
 import FormField from '../../utils/Form/formfield';
 import { update, generateData, isFormValid, populateOptionFields, resetFields } from '../../utils/Form/formActions';
+import FileUpload from '../../utils/Form/fileupload';
 import { connect } from 'react-redux';
 import { getBrands, getWoods, addProduct, clearProduct } from '../../../actions/products_actions';
 
@@ -171,6 +172,16 @@ class AddProduct extends Component {
                 touched: false,
                 validationMessage: '',
                 showlabel: true
+            },
+            images:{
+                value:[],
+                validation:{
+                    required: false
+                },
+                valid: false,
+                touched: false,
+                validationMessage: '',
+                showlabel: false
             }
         }
 
@@ -248,12 +259,28 @@ class AddProduct extends Component {
         })
     }
 
+    imagesHandler = (images) => {
+        const newFormData = {
+            ...this.state.formData
+        }
+        newFormData['images'].value = images;
+        newFormData['images'].valid = true;
+
+        this.setState({
+            formData: newFormData
+        })
+    }
+
     render() {
         return (
             <UserLayout>
                 <div>
                     <h1>Add product</h1>
                     <form onSubmit={(event) => this.submitForm(event)}>
+                        <FileUpload
+                            imagesHandler={(images)=> this.imagesHandler(images)}
+                            reset={this.state.formSuccess}
+                        />
                         <FormField
                             id={'name'}
                             formdata={this.state.formData.name}

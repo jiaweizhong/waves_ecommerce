@@ -9,8 +9,31 @@ import {
     ADD_WOODS,
     GET_PRODUCTS_TO_SHOP,
     ADD_PRODUCT,
-    CLEAR_PRODUCT
+    CLEAR_PRODUCT,
+    GET_PRODUCTS_DETAIL,
+    CLEAR_PRODUCTS_DETAIL
 } from './type';
+
+
+export function getProductDetail(id){
+    const request = axios.get(`${PRODUCT_SERVER}/article_by_id?id=${id}&type=single`)
+                    .then(response => { 
+                        return response.data[0]
+                    });
+    return {
+        type: GET_PRODUCTS_DETAIL,
+        payload: request
+
+    }
+}
+
+export function clearProductDetail(){
+    return {
+        type: CLEAR_PRODUCTS_DETAIL,
+        payload: ''
+    }
+}
+
 
 export function getProductsByArrival(){
 // By Arrival

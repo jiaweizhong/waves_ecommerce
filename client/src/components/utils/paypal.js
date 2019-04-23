@@ -5,8 +5,20 @@ class Paypal extends Component {
     render() {
 
         const onSuccess = (payment) => {
-          //  console.log(JSON.stringify(payment));
-          this.props.onSuccess(payment)
+            console.log(JSON.stringify(payment));
+            this.props.onSuccess(payment);
+
+        /*    { 
+                "paid": true, 
+                "cancelled": false, 
+                "payerID": "W2WF5WNPEZFNE", 
+                "paymentID": "PAYID-LS7FW4A5FS935329D6064044", 
+                "paymentToken": "EC-0FJ20681GW904473G", 
+                "returnUrl": "https://www.paypal.com/checkoutnow/error?paymentId=PAYID-LS7FW4A5FS935329D6064044&token=EC-0FJ20681GW904473G&PayerID=W2WF5WNPEZFNE", 
+                "address": { "recipient_name": "test buyer", "line1": "1 Main St", "city": "San Jose", "state": "CA", "postal_code": "95131", "country_code": "US" }, 
+                "email": "jiaweizhong1989-buyer@gmail.com" 
+            }
+        */
         }
 
         const onCancel = (data) => {
@@ -23,13 +35,13 @@ class Paypal extends Component {
 
         const client = {
             // sandbox key
-            sandobx:'test',
-            production:'test'
+            sandbox: 'AeMILFe3tWzUv0oCE_VxsT5iidZ2qoAqySGhDAL5zkVRiaAX96ueBhCWKeZuSsD3U6cW3KV2oX_TVqo2',
+            production: ''
         }
 
         return (
             <div>
-                <PaypalExpressBtn 
+                <PaypalExpressBtn
                     env={env}
                     client={client}
                     currency={currency}
@@ -38,10 +50,10 @@ class Paypal extends Component {
                     onSuccess={onSuccess}
                     onCancel={onCancel}
                     style={{
-                        size:'large',
-                        color:'blue',
-                        shape:'rect',
-                        label:'checkout'
+                        size: 'large',
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'checkout'
                     }}
                 />
             </div>

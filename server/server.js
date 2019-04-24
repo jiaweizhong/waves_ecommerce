@@ -33,6 +33,7 @@ const { Brand } = require('./models/brand');
 const { Wood } = require('./models/wood');
 const { Product } = require('./models/product');
 const { Payment } = require('./models/payment');
+const { Site } = require('./models/site');
 
 // middleware
 const { auth } = require('./middleware/auth');
@@ -410,6 +411,33 @@ app.post('/api/users/update_profile', auth, (req, res)=>{
             return res.status(200).send({
                 success: true
             })
+        }
+    )
+})
+
+//====================================
+//           Site
+//====================================
+
+app.get('/api/site/site_data', (req, res) => {
+    Site.find({}, (err,site) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(site[0].siteInfo);
+    });
+});
+
+app.post('/api/site/site_data', auth, admin, (req, res) => {
+    
+    Site.findOneAndUpdate(
+        { name: 'Site'}, // name field in the db as find key
+        {"$set": {siteInfo: req.body}},
+        {new: true},
+        (err, doc) => {
+            if(err) return res.json({success: false, err});
+            return res.status(200).send({
+                success: true,
+                siteInfo: doc.siteInfo
+            });
         }
     )
 })

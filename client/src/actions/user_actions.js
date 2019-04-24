@@ -12,7 +12,6 @@ import {
     UPDATE_DATA_USER,
     CLEAR_UPDATE_USER_DATA
 } from './type';
-import user from '../hoc/user';
 
 export function registerUser(dataToSubmit){
     const request = axios.post(`${USER_SERVER}/register`, dataToSubmit)

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Lightbox from 'react-images';
-import { element } from 'prop-types';
 
 class ImageLightbox extends Component {
 

@@ -23,5 +23,7 @@ export const ADD_PRODUCT = 'add_product';
 export const CLEAR_PRODUCT = 'clear_product';
 export const GET_PRODUCTS_DETAIL = 'get_product_detail';
 export const CLEAR_PRODUCTS_DETAIL = 'clear_product_detail';
-
+// site info
+export const GET_SITE_DATA = "get_site_data";
+export const UPDATE_SITE_DATA = "update_site_data";
 

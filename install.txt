@@ -27,3 +27,6 @@ npm install @fortawesome/fontawesome@1.1.8 @fortawesome/fontawesome-free-solid@5
 // set up proxy for client to make it run on same server
 npm install http-proxy-middleware --save
 // add setupProxy.js in the client/src
+
+// export mongodb 
+./mongodump -h localhost:27017 -d waves -o ~/Downloads/mongoOutput

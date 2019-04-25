@@ -13,7 +13,7 @@ class Header extends Component{
                 public:true
             },
             {
-                name:'Guitar',
+                name:'Product',
                 linkTo:'/shop',
                 public:true
             }

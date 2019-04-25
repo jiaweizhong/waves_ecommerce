@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 // cookie parser
 const cookieParser = require('cookie-parser');
 const formidable = require('express-formidable');
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary'); // pic upload
 
 const mongoose = require('mongoose');
 const async = require('async');
@@ -38,6 +38,9 @@ const { Site } = require('./models/site');
 // middleware
 const { auth } = require('./middleware/auth');
 const { admin } = require('./middleware/admin');
+
+// utils
+const { sendEmail } = require('./utils/mail/index');
 
 //====================================
 //           Products
@@ -206,11 +209,11 @@ app.post('/api/users/register', (req, res) => {
     const user = new User(req.body);
     user.save((err, doc) => {
         if(err) return res.json({success:false, err});
-        res.status(200).json({
+        sendEmail(doc.email, doc.name, null,'welcome');
+        return res.status(200).json({
             success: true,
             // userdata: doc
         })
-        console.log('Writting to MongoDB successfully');
     });
 });
 

@@ -180,7 +180,7 @@ class Register extends Component{
                             <div>
                                 { this.state.formError ? 
                                     <div className='error_label'>
-                                        Please check your data, password need to be at least 5 characters.
+                                        Please check your data, user already exists or password not match.
                                     </div>
                                 :null}
                                 <button onClick={(event) => this.submitForm(event)}>
